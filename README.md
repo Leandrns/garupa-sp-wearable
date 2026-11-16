@@ -2,7 +2,7 @@
 
 Vestível opcional do **Garupa SP**, o app para motociclistas e entregadores por aplicativo da CitizenTech do grupo. A pulseira confirma que o corpo sofreu o impacto, deixa o motociclista cancelar ou pedir socorro sem pegar o celular e **repete no pulso, com luzes e sons, os alertas do app**.
 
-- **Link do projeto no Wokwi:** _(a preencher)_
+- **Link do projeto no Wokwi:** [wokwi.com/projects/480690813997130753](https://wokwi.com/projects/480690813997130753)
 - **Integrantes** (também em [integrantes.txt](integrantes.txt)):
   - Caio Alexandre dos Santos (RM 558460)
   - Leandro do Nascimento Souza (RM 558893)
