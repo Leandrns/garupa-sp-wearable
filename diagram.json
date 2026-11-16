@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "author": "Garupa SP",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-mpu6050",
+      "id": "mpu",
+      "top": -102.62,
+      "left": 166.12,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn",
+      "top": 131,
+      "left": 211.2,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buz",
+      "top": -16.8,
+      "left": 174.6,
+      "attrs": { "volume": "0.05" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "led",
+      "top": 4,
+      "left": -190.9,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rR",
+      "top": 61.55,
+      "left": -124.8,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rG",
+      "top": 90.35,
+      "left": -124.8,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rB",
+      "top": 119.15,
+      "left": -124.8,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "mpu:VCC", "esp:3V3", "red", [ "v-0.08", "h-177.79" ] ],
+    [ "mpu:GND", "esp:GND.2", "black", [ "h-67.2", "v124.72" ] ],
+    [ "mpu:SDA", "esp:21", "green", [ "h-28.8", "v153.52" ] ],
+    [ "mpu:SCL", "esp:22", "orange", [ "h-38.4", "v134.32" ] ],
+    [ "mpu:AD0", "esp:GND.2", "black", [ "h-57.6", "v38.42", "v38.4" ] ],
+    [ "btn:1.l", "esp:4", "blue", [ "v0" ] ],
+    [ "btn:2.l", "esp:GND.2", "black", [ "v0.2", "h-86.4", "v-134.4" ] ],
+    [ "buz:2", "esp:18", "purple", [ "v0" ] ],
+    [ "buz:1", "esp:GND.2", "black", [ "v19.2", "h-76.8", "v-57.6" ] ],
+    [ "esp:25", "rR:2", "red", [ "h-52.61", "v-38.4" ] ],
+    [ "esp:26", "rG:2", "green", [ "h-62.21", "v-19.2" ] ],
+    [ "esp:27", "rB:2", "blue", [ "v0" ] ],
+    [ "rR:1", "led:R", "red", [ "h-57.6", "v-19.2" ] ],
+    [ "rG:1", "led:G", "green", [ "h-38.4", "v-48" ] ],
+    [ "rB:1", "led:B", "blue", [ "h-28.8", "v-76.8" ] ],
+    [ "led:COM", "esp:GND.1", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
