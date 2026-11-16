@@ -14,10 +14,9 @@ Vestível opcional do **Garupa SP**, o app para motociclistas e entregadores por
 
 O produto funciona sem ela: o app detecta a queda e pede socorro sozinho. A pulseira é uma segunda leitura (o celular no guidão sofre buraco e trepidação o tempo todo) e um botão que dispensa o celular.
 
-```
-Pulseira (ESP32) ── eventos: impacto, sos, cancelar ──▶ API Garupa SP ◀── app (consome os eventos e abre/cancela a contagem)
-Pulseira (ESP32) ◀── alertas pendentes (consulta a cada 2 s) ── API ◀── app (envia turno_ativo, ponto_critico, ...)
-```
+![Arquitetura geral do Garupa SP e o lugar da pulseira](docs/arquitetura.svg)
+
+O app e a pulseira falam com a **mesma API**. A pulseira envia à API os eventos `impacto`, `sos` e `cancelar`, que o app consome para abrir ou cancelar a contagem; e consulta os alertas que o app mandou (`turno_ativo`, `ponto_critico`, ...) para repeti-los no pulso.
 
 - O Wokwi não simula Bluetooth no ESP32, então o circuito usa **WiFi** (`Wokwi-GUEST`) e **HTTPS** contra a API publicada. No produto real, o app falaria direto com a pulseira por Bluetooth, e a API ficaria só para os eventos.
 - A pulseira **não envia posição**: ela vem do celular. Os payloads levam só `dispositivoId`, `tipo` e `ocorridoEm`.
@@ -251,5 +250,7 @@ garupa-sp-wearable/
 ├── diagram.json          circuito do Wokwi
 ├── sketch.ino            firmware
 ├── config.h              configuração (pinos, limiares, API)
+├── docs/
+│   └── arquitetura.svg   diagrama da arquitetura geral
 └── integrantes.txt       nomes dos integrantes
 ```

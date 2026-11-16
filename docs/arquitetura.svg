@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 660" width="1240" height="660" role="img" aria-labelledby="titulo descricao" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title id="titulo">Arquitetura geral do Garupa SP e o lugar da pulseira</title>
+  <desc id="descricao">O app no celular e a pulseira ESP32 falam com a mesma API em C#, que usa um banco PostgreSQL e recebe a tabela de risco do modelo de machine learning. A pulseira envia eventos e consulta alertas pela API; no produto real, falaria com o app por Bluetooth.</desc>
+
+  <defs>
+    <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#46525e"/>
+    </marker>
+    <marker id="seta-laranja" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c26f00"/>
+    </marker>
+    <marker id="seta-cinza" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a8591"/>
+    </marker>
+  </defs>
+
+  <rect width="1240" height="660" fill="#ffffff"/>
+
+  <!-- Dados e modelo (offline) -->
+  <rect x="30" y="60" width="250" height="56" rx="10" fill="#f6f7f9" stroke="#c3c9d2" stroke-width="1.5"/>
+  <text x="46" y="85" font-size="15" font-weight="700" fill="#1f2933">Dados públicos reais</text>
+  <text x="46" y="104" font-size="12.5" fill="#46525e">Infosiga e INMET</text>
+  <line x1="155" y1="116" x2="155" y2="148" stroke="#46525e" stroke-width="1.8" marker-end="url(#seta)"/>
+
+  <rect x="30" y="150" width="250" height="56" rx="10" fill="#f6f7f9" stroke="#c3c9d2" stroke-width="1.5"/>
+  <text x="46" y="175" font-size="15" font-weight="700" fill="#1f2933">Modelo de risco (ML)</text>
+  <text x="46" y="194" font-size="12.5" fill="#46525e">treinado uma vez, offline</text>
+  <line x1="155" y1="206" x2="155" y2="238" stroke="#46525e" stroke-width="1.8" marker-end="url(#seta)"/>
+
+  <rect x="30" y="240" width="250" height="56" rx="10" fill="#f6f7f9" stroke="#c3c9d2" stroke-width="1.5"/>
+  <text x="46" y="265" font-size="15" font-weight="700" fill="#1f2933">risco_celula.csv</text>
+  <text x="46" y="284" font-size="12.5" fill="#46525e">risco por célula, hora e chuva</text>
+  <line x1="280" y1="268" x2="418" y2="268" stroke="#46525e" stroke-width="1.8" marker-end="url(#seta)"/>
+  <text x="349" y="257" font-size="12" text-anchor="middle" fill="#46525e">carga da tabela</text>
+
+  <!-- App -->
+  <rect x="420" y="20" width="360" height="100" rx="10" fill="#f6f7f9" stroke="#c3c9d2" stroke-width="1.5"/>
+  <text x="440" y="45" font-size="15" font-weight="700" fill="#1f2933">App Garupa SP (Expo, celular)</text>
+  <text x="440" y="67" font-size="12.5" fill="#1f2933">Mapa de pontos críticos e mensagens</text>
+  <text x="440" y="85" font-size="12.5" fill="#1f2933">Detecção de queda, SOS e relatos</text>
+  <text x="440" y="103" font-size="12.5" fill="#1f2933">Pareia a pulseira e envia os alertas dela</text>
+
+  <!-- App <-> API -->
+  <line x1="520" y1="120" x2="520" y2="198" stroke="#46525e" stroke-width="1.8" marker-end="url(#seta)"/>
+  <text x="508" y="152" font-size="12" text-anchor="end" fill="#46525e">SOS, relatos e alertas</text>
+  <text x="508" y="168" font-size="12" text-anchor="end" fill="#46525e">para a pulseira</text>
+  <line x1="680" y1="198" x2="680" y2="122" stroke="#46525e" stroke-width="1.8" marker-end="url(#seta)"/>
+  <text x="692" y="152" font-size="12" fill="#46525e">risco, plano do turno e</text>
+  <text x="692" y="168" font-size="12" fill="#46525e">eventos da pulseira (2 s)</text>
+
+  <!-- API -->
+  <rect x="420" y="200" width="360" height="200" rx="10" fill="#eaf1fd" stroke="#4a7bd0" stroke-width="2"/>
+  <text x="440" y="226" font-size="15" font-weight="700" fill="#1f2933">API Garupa SP (C#/.NET)</text>
+  <text x="440" y="246" font-size="12" fill="#46525e">publicada no Railway, acesso com token JWT</text>
+  <text x="440" y="282" font-size="12.5" fill="#1f2933">Risco: /risco, /plano-do-turno, /mensagens</text>
+  <text x="440" y="304" font-size="12.5" fill="#1f2933">Socorro: /sos, /acompanhar, /relatos</text>
+  <text x="440" y="326" font-size="12.5" fill="#1f2933">Pulseira: /eventos-vestivel (recebe)</text>
+  <text x="440" y="348" font-size="12.5" fill="#1f2933">Pulseira: /alertas-vestivel (guarda e entrega)</text>
+  <text x="440" y="370" font-size="12.5" fill="#1f2933">Acesso: /autenticacao/login</text>
+
+  <!-- API <-> Pulseira -->
+  <line x1="520" y1="498" x2="520" y2="402" stroke="#c26f00" stroke-width="2.2" marker-end="url(#seta-laranja)"/>
+  <text x="508" y="440" font-size="12" text-anchor="end" fill="#8a4f00">eventos: impacto, sos e</text>
+  <text x="508" y="456" font-size="12" text-anchor="end" fill="#8a4f00">cancelar (POST, HTTPS)</text>
+  <line x1="680" y1="402" x2="680" y2="498" stroke="#c26f00" stroke-width="2.2" marker-end="url(#seta-laranja)"/>
+  <text x="692" y="440" font-size="12" fill="#8a4f00">alertas pendentes</text>
+  <text x="692" y="456" font-size="12" fill="#8a4f00">(GET a cada 2 s)</text>
+
+  <!-- Pulseira -->
+  <rect x="420" y="500" width="360" height="130" rx="10" fill="#fff4e0" stroke="#e08a00" stroke-width="3"/>
+  <text x="440" y="526" font-size="15" font-weight="700" fill="#1f2933">Pulseira (ESP32 no Wokwi)</text>
+  <text x="440" y="552" font-size="12.5" fill="#1f2933">MPU6050: pico de aceleração e imobilidade</text>
+  <text x="440" y="574" font-size="12.5" fill="#1f2933">Botão: cancelar, pedir SOS e cancelar o SOS</text>
+  <text x="440" y="596" font-size="12.5" fill="#1f2933">LED RGB e buzzer: repetem os alertas do app</text>
+
+  <!-- Direita: contato e banco -->
+  <line x1="780" y1="260" x2="898" y2="260" stroke="#46525e" stroke-width="1.8" marker-end="url(#seta)"/>
+  <text x="839" y="232" font-size="12" text-anchor="middle" fill="#46525e">link de</text>
+  <text x="839" y="247" font-size="12" text-anchor="middle" fill="#46525e">acompanhamento</text>
+  <rect x="900" y="225" width="300" height="70" rx="10" fill="#f6f7f9" stroke="#c3c9d2" stroke-width="1.5"/>
+  <text x="920" y="253" font-size="15" font-weight="700" fill="#1f2933">Contato de emergência</text>
+  <text x="920" y="273" font-size="12.5" fill="#46525e">abre o link no navegador</text>
+
+  <line x1="780" y1="358" x2="898" y2="358" stroke="#46525e" stroke-width="1.8" marker-end="url(#seta)"/>
+  <rect x="900" y="330" width="300" height="56" rx="10" fill="#f6f7f9" stroke="#c3c9d2" stroke-width="1.5"/>
+  <text x="920" y="355" font-size="15" font-weight="700" fill="#1f2933">Banco PostgreSQL</text>
+  <text x="920" y="374" font-size="12.5" fill="#46525e">usuários, SOS, eventos e alertas</text>
+
+  <!-- Bluetooth: só no produto real -->
+  <path d="M780,70 H1215 V565 H782" fill="none" stroke="#7a8591" stroke-width="1.8" stroke-dasharray="7 5" marker-end="url(#seta-cinza)"/>
+  <text x="1000" y="60" font-size="12" text-anchor="middle" fill="#46525e">Bluetooth, só no produto real</text>
+  <text x="830" y="592" font-size="12" fill="#46525e">O Wokwi não simula Bluetooth: na simulação,</text>
+  <text x="830" y="608" font-size="12" fill="#46525e">tudo passa pela API (WiFi e HTTPS).</text>
+
+  <!-- Legenda -->
+  <rect x="30" y="520" width="20" height="13" rx="3" fill="#fff4e0" stroke="#e08a00" stroke-width="2"/>
+  <text x="60" y="531" font-size="12" fill="#1f2933">Esta pasta (garupa-sp-wearable)</text>
+  <line x1="30" y1="558" x2="50" y2="558" stroke="#46525e" stroke-width="1.8"/>
+  <text x="60" y="562" font-size="12" fill="#1f2933">Chamadas HTTPS à API</text>
+  <line x1="30" y1="586" x2="50" y2="586" stroke="#7a8591" stroke-width="1.8" stroke-dasharray="7 5"/>
+  <text x="60" y="590" font-size="12" fill="#1f2933">Bluetooth, só no produto real</text>
+</svg>
