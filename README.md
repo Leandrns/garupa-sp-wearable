@@ -7,8 +7,22 @@ Vestível opcional do **Garupa SP**, o app para motociclistas e entregadores por
   - Caio Alexandre dos Santos (RM 558460)
   - Leandro do Nascimento Souza (RM 558893)
   - Rafael de Mônaco Maniezo (RM 556079)
-  - Vinicius Rozas Pannuci de Paula Cont (RM 555338)
+  - Vinicius Rozas Panucci de Paula Cont (RM 555338)
 - **Vídeo (até 4 min):** _(a preencher)_
+
+## Ficha da CitizenTech
+
+| Campo | Resposta |
+| --- | --- |
+| **Nome da CitizenTech** | Garupa SP |
+| **Cidade e bairro** | São Paulo, SP. O modelo cobre a capital inteira: 2.044 células de ~0,7 km² nos 96 distritos. |
+| **Cidadão beneficiado** | Motociclistas da capital, em especial entregadores por aplicativo. |
+| **Problema, em uma frase** | Os motociclistas são o maior grupo de mortes no trânsito da capital paulista (475 de 1.034 em 2025, segundo o Infosiga), a moto bate recorde em 2026, e quem pilota tem pouco apoio para evitar os pontos mais críticos e pedir socorro quando não consegue. |
+| **Como funciona** | Um modelo treinado com dados públicos estima o risco por trecho, faixa horária, tipo de dia e chuva. A API serve a tabela; o app mostra os pontos críticos das áreas do motociclista, detecta impacto pelo sensor do celular e, sem resposta em 30 s, registra o SOS e envia um link de acompanhamento aos contatos. |
+| **O que cada parte faz** | **ML:** gera a tabela de risco. **API (C#/.NET):** serve risco, SOS, acompanhamento e relatos. **App (Expo):** plano do turno, alertas, detecção de queda e SOS. **Vestível (ESP32 no Wokwi, este repositório):** envia eventos e repete os alertas em luzes. **VM Linux:** hospeda a API. **Cybersecurity:** protege localização, contatos e ficha médica. |
+| **Link do repositório** | ML: <https://github.com/Viniciuscont2/garupa-sp-ml> · API: <https://github.com/caio-alex/garupa-sp-api> · App: <https://github.com/mmaniezo/garupa-sp-mobile> · Infra: <https://github.com/Leandrns/garupa-sp-infra> · Vestível: <https://github.com/Leandrns/garupa-sp-wearable> |
+| **Indicador de impacto** | **Lift nos 10% melhores:** parcela dos sinistros graves com moto de 2025 que cai nos 10% de células mais bem ranqueadas, contra o baseline histórico. Resultado: **3,2×** com o modelo, **3,1×** com o histórico por célula (empate estatístico; ver Resultados no [repositório de ML](https://github.com/Viniciuscont2/garupa-sp-ml)). |
+| **ODS conectados** | ODS 3 (meta 3.6), ODS 11 (meta 11.2), ODS 10 e ODS 9. |
 
 ## Como a pulseira entra na solução
 
