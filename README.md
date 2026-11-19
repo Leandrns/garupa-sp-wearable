@@ -8,7 +8,7 @@ Vestível opcional do **Garupa SP**, o app para motociclistas e entregadores por
   - Leandro do Nascimento Souza (RM 558893)
   - Rafael de Mônaco Maniezo (RM 556079)
   - Vinicius Rozas Panucci de Paula Cont (RM 555338)
-- **Vídeo (até 4 min):** _(a preencher)_
+- **Vídeo (até 4 min):** [youtu.be](https://youtu.be/0t56urh2SU8)
 
 ## Ficha da CitizenTech
 
